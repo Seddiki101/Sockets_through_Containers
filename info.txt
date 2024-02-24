@@ -1,0 +1,13 @@
+//create a network
+docker network create socket_network
+
+//each of these commands should be executed in their respected folder
+
+docker build -t receivenode .
+
+docker build -t sendnode .
+
+
+docker run -d --network socket_network --name receiver receivenode
+
+docker run -it --network socket_network --name sender sendnode
